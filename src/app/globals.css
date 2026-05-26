@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #FAFAFA;
+  --color-foreground: #1a1a1a;
+  --color-accent: #C62828;
+  --color-accent-light: #E53935;
+  --color-accent-dark: #A51C1C;
+  --color-navy: #455A74;
+  --color-navy-light: #5A7494;
+  --color-surface: #FFFFFF;
+  --color-surface-light: #F5F5F5;
+  --color-surface-lighter: #EEEEEE;
+  --color-border: #E0E0E0;
+  --color-muted: #777777;
+  --color-muted-light: #555555;
+
+  --font-display: var(--font-inter);
+  --font-body: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar — paint roller style */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-light);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-accent), var(--color-accent-dark));
+  border-radius: 3px;
+}
+
+/* Glass */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Gradient text — paint colors */
+.gradient-text {
+  background: linear-gradient(135deg, #C62828 0%, #455A74 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Selection — paint red */
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* ===== PAINT ANIMATIONS ===== */
+
+/* Paint drip on section dividers */
+.paint-divider {
+  position: relative;
+  overflow: visible;
+}
+.paint-divider::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--color-accent);
+}
+.paint-divider::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 15%;
+  width: 12px;
+  height: 20px;
+  background: var(--color-accent);
+  border-radius: 0 0 6px 6px;
+  animation: drip 4s ease-in-out infinite;
+}
+@keyframes drip {
+  0%, 100% { height: 20px; opacity: 1; }
+  50% { height: 30px; opacity: 0.8; }
+}
+
+/* Paint stroke underline */
+.paint-stroke {
+  position: relative;
+  display: inline-block;
+}
+.paint-stroke::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -4%;
+  width: 108%;
+  height: 8px;
+  background: var(--color-accent);
+  opacity: 0.15;
+  border-radius: 4px;
+  transform: rotate(-0.5deg);
+}
+
+/* Paint roller reveal — sections animate in like paint being rolled on */
+@keyframes rollReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Brush stroke border */
+.brush-border {
+  position: relative;
+}
+.brush-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--color-accent) 0%, transparent 40%, transparent 60%, var(--color-navy) 100%);
+  z-index: -1;
+  opacity: 0.15;
+}
+
+/* Paint swatch hover effect */
+.swatch-hover {
+  transition: all 0.3s ease;
+}
+.swatch-hover:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Color palette dots animation */
+@keyframes colorPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Paint bucket pour effect on CTA buttons */
+.paint-btn {
+  position: relative;
+  overflow: hidden;
+}
+.paint-btn::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+  transition: top 0.4s ease;
+}
+.paint-btn:hover::before {
+  top: 100%;
+}
+
+/* Roller texture on cards */
+.roller-texture {
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,0.01) 50%, transparent 50%);
+  background-size: 4px 4px;
+}
+
+/* Section accent bar — like a paint stripe */
+.section-accent {
+  position: relative;
+}
+.section-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
