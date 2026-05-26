@@ -11,14 +11,11 @@ export const GOOGLE_REVIEWS_COUNT = 118;
 export const GOOGLE_RATING = "5.0";
 
 export const NAV_LINKS = [
-  { label: "Αρχική", href: "#hero" },
-  { label: "Υπηρεσίες", href: "#services" },
-  { label: "Έργα", href: "#projects" },
-  { label: "Γιατί Εμάς", href: "#why-us" },
-  { label: "Κριτικές", href: "#reviews" },
-  { label: "Διαδικασία", href: "#process" },
+  { label: "Αρχική", href: "/" },
+  { label: "Έργα", href: "/erga" },
+  { label: "Υπηρεσίες", href: "/about" },
   { label: "Χρωματολόγιο", href: "/xromatologio" },
-  { label: "Επικοινωνία", href: "#contact" },
+  { label: "Επικοινωνία", href: "/about#contact" },
 ];
 
 export const SERVICES = [
